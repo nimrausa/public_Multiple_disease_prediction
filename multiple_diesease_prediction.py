@@ -7,7 +7,6 @@ Created on Tue Aug  9 21:06:41 2022
 
 import pickle #load saved models
 import streamlit as st  #for web page
-
 from streamlit_option_menu import option_menu
 import numpy as np
 
