@@ -7,15 +7,17 @@ Created on Tue Aug  9 21:06:41 2022
 
 import pickle #load saved models
 import streamlit as st  #for web page
+import sys
 
+sys.path.insert(1, "streamlit_option_menu")
 from streamlit_option_menu import option_menu
 import numpy as np
 
 
 #loading the saved models
-diabetes_model=pickle.load(open('C:/Users/nimra/OneDrive/Desktop/MachineLearning/saved dieases/diabetes_model.sav','rb'))
-heart_disease_model=pickle.load(open('C:/Users/nimra/OneDrive/Desktop/MachineLearning/saved dieases/heart_disease_model.sav','rb'))
-parkinsons_model=pickle.load(open('C:/Users/nimra/OneDrive/Desktop/MachineLearning/saved dieases/parkinsons_model.sav','rb'))
+diabetes_model=pickle.load(open('diabetes_model.sav','rb'))
+heart_disease_model=pickle.load(open('heart_disease_model.sav','rb'))
+parkinsons_model=pickle.load(open('parkinsons_model.sav','rb'))
 
 
 
@@ -35,7 +37,6 @@ with st.sidebar:
                            'Parkinsons Prediction'],
                           icons=['activity','heart','person'],
                           default_index=0)
-    
     
 # Diabetes Prediction Page
 if (selected == 'Diabetes Prediction'):
