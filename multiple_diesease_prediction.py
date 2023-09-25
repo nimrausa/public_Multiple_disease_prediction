@@ -165,6 +165,15 @@ if (selected == 'Heart Disease Prediction'):
         
     with col3:
         cp = st.text_input('Chest Pain types', placeholder='Eg= 0,1,2 or 3')
+        more_cp = {
+            "More: Different types of chest pain may indicate various heart conditions.",
+            "0: This value represents the absence of chest pain or discomfort. It indicates that the individual reports no chest pain symptoms.",
+            "1: This value typically represents mild or non-specific discomfort in the chest. It may include sensations such as minor discomfort, pressure, or a vague feeling of unease. This category is generally considered less severe.",
+            "3: The value 3 often represents intense or severe chest pain. It may indicate significant chest discomfort or pain, which is more likely to be associated with heart-related issues. This category can include symptoms such as severe chest pain, tightness, or a crushing sensation."
+        }
+        
+        if st.button("More (cp)", key="more_cp"):
+            st.write(more_cp)
         
     with col1:
         trestbps = st.text_input('Resting Blood Pressure (in mm Hg )', placeholder='range varies from 94 to 200')
@@ -189,6 +198,13 @@ if (selected == 'Heart Disease Prediction'):
         
     with col2:
         slope = st.text_input('Slope of the peak exercise ST segment(ECG waveform during physical exercise).', placeholder='0:upsloping,1:Flat,2:Downsloping')
+        more_slope = {
+        "- **0 (Upsloping)**: This value represents an ECG (electrocardiogram) pattern where the ST segment of the ECG tracing slopes in an upward direction during the peak of exercise. An upsloping ST segment is typically considered normal and may indicate a lower likelihood of coronary artery disease (CAD). It's often seen in individuals with a healthy heart.",
+        "- **1 (Flat)**: A value of 1 indicates a flat or horizontal ST segment during the peak of exercise. A flat ST segment can be suggestive of certain heart abnormalities or ischemia (reduced blood flow to the heart muscle). It may warrant further investigation and medical evaluation.",
+        "- **2 (Downsloping)**: A value of 2 means that the ST segment of the ECG tracing slopes in a downward direction during the peak of exercise. A downsloping ST segment is more strongly associated with ischemia and can be an indicator of reduced blood flow to the heart muscle during physical exertion. It's often considered abnormal and may warrant medical attention."
+    }
+        if st.button("More (slope)", key="more_slope"):
+            st.write(more_slope)
         
     with col3:
         # Description
