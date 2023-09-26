@@ -256,10 +256,18 @@ if (selected == 'Heart Disease Prediction'):
         if st.button("More (ST Depression)", key="more_oldpeak"):
             st.write(more_oldpeak)
 
+    with col2:
+        slope = st.slider('Slope of Peak Exercise ST Segment', min_value=0, max_value=2, value=1, key='slope')
 
+        more_slope = {
+            0: "Value 0 (Upsloping): This value represents an ECG (electrocardiogram) pattern where the ST segment of the ECG tracing slopes in an upward direction during the peak of exercise. An upsloping ST segment is typically considered normal and may indicate a lower likelihood of coronary artery disease (CAD). It's often seen in individuals with a healthy heart.",
+            1: "Value 1 (Flat): A value of 1 indicates a flat or horizontal ST segment during the peak of exercise. A flat ST segment can be suggestive of certain heart abnormalities or ischemia (reduced blood flow to the heart muscle). It may warrant further investigation and medical evaluation.",
+            2: "Value 2 (Downsloping): A value of 2 means that the ST segment of the ECG tracing slopes in a downward direction during the peak of exercise. A downsloping ST segment is more strongly associated with ischemia and can be an indicator of reduced blood flow to the heart muscle during physical exertion. It's often considered abnormal and may warrant medical attention."
+        }
 
-        
-    
+        if st.button("More (Slope of Peak Exercise ST Segment)", key="more_slope"):
+            st.write(more_slope)
+
     with col3:
         ca = st.slider('Major Vessels Colored by Fluoroscopy', min_value=0, max_value=3, value=0, key='ca')
 
