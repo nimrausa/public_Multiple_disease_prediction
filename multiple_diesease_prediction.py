@@ -22,11 +22,6 @@ parkinsons_model=pickle.load(open('parkinsons_model.sav','rb'))
 
 
 
-# loading the saved models
-
-
-
-
 # sidebar for navigation
 with st.sidebar:
     
@@ -37,6 +32,7 @@ with st.sidebar:
                            'Parkinsons Prediction'],
                           icons=['activity','heart','person'],
                           default_index=0)
+    
     
 # Diabetes Prediction Page
 if (selected == 'Diabetes Prediction'):
@@ -51,80 +47,85 @@ if (selected == 'Diabetes Prediction'):
 
     # Number of Pregnancies
     with col1:
-        Pregnancies = st.text_input('Number of Pregnancies', placeholder='Eg= 1, 2, 3...')
+        Pregnancies = st.slider('Number of Pregnancies', min_value=0.0, max_value=17.0, value=0.1, key='pregnancies')
         more_pregnancies = {
             "Description": "The number of times the person has been pregnant.",
-            "Range": "The range for this field depends on the dataset, but typically it is a positive integer."
+            
         }
         if st.button("More (Pregnancies)", key="more_pregnancies"):
             st.write(more_pregnancies)
     
     # Glucose Level
     with col2:
-        Glucose = st.text_input('Glucose Level', placeholder='Eg= 1, 2, 3...')
+        Glucose = st.slider('Glucose Level', min_value=70.0, max_value=140.0, value=100.0, step=0.1, key='glucose_level')
+
         more_glucose = {
             "Description": "The person's fasting blood sugar level (measured in mg/dL).",
-            "Range": "The range for this field typically falls within a normal blood sugar level, around 70-140 mg/dL."
+            "Normal Value": "For a normal person, the typical fasting blood glucose level is around 70 to 100 mg/dL."
         }
+
         if st.button("More (Glucose)", key="more_glucose"):
             st.write(more_glucose)
     
     # Blood Pressure value
     with col3:
-        BloodPressure = st.text_input('Blood Pressure value', placeholder='Eg= 1, 2, 3...')
+        BloodPressure = st.slider('Blood Pressure value', min_value=0.0, max_value=300.0, value=120.0, key='blood_pressure')
         more_blood_pressure = {
             "Description": "The person's blood pressure measurement (systolic/diastolic in mm Hg).",
-            "Range": "A normal blood pressure range is around 90/60 mm Hg to 120/80 mm Hg."
+            "Normal Value": "For a normal adult, the typical blood pressure reading is around 120/80 mm Hg."
         }
         if st.button("More (Blood Pressure)", key="more_blood_pressure"):
             st.write(more_blood_pressure)
     
     # Skin Thickness value
     with col1:
-        SkinThickness = st.text_input('Skin Thickness value', placeholder='Eg= 1, 2, 3...')
+        SkinThickness = st.slider('Skin Thickness value', min_value=0.0, max_value=100.0, value=20.0, key='skin_thickness')
         more_skin_thickness = {
             "Description": "The thickness of the person's skinfold at a specific location (measured in mm).",
-            "Range": "Skin thickness values can vary but are generally positive numbers."
+            "Normal Value": "For a normal person, the skin thickness at this location typically falls within a range of 10 to 30 mm."
         }
         if st.button("More (Skin Thickness)", key="more_skin_thickness"):
             st.write(more_skin_thickness)
     
     # Insulin Level
     with col2:
-        Insulin = st.text_input('Insulin Level', placeholder='Eg= 1, 2, 3...')
+        Insulin = st.slider('Insulin Level', min_value=0.0, max_value=1000.0, value=150.0, key='insulin')
+
         more_insulin = {
             "Description": "The person's insulin level (measured in mu U/mL).",
-            "Range": "Insulin levels can vary, but they are typically within the range of 2-30 mu U/mL for fasting insulin."
+            "Normal Value": "For a normal person without diabetes, the typical fasting insulin level falls within the range of 5 to 15 mu U/mL. "
         }
         if st.button("More (Insulin)", key="more_insulin"):
             st.write(more_insulin)
     
     # BMI value
     with col3:
-        BMI = st.text_input('BMI value', placeholder='Eg= 1, 2, 3...')
+        BMI = st.slider('BMI value', min_value=10.0, max_value=50.0, value=25.0, step=0.1, key='bmi')
         more_bmi = {
             "Description": "The Body Mass Index (BMI) is a measure of a person's body weight in relation to their height (kg/m^2).",
-            "Range": "Normal BMI values typically fall within the range of 18.5 to 24.9."
+            "Normal Value": "Normal BMI values typically fall within the range of 18.5 to 24.9."
         }
         if st.button("More (BMI)", key="more_bmi"):
             st.write(more_bmi)
     
     # Diabetes Pedigree Function value
     with col1:
-        DiabetesPedigreeFunction = st.text_input('Diabetes Pedigree Function value', placeholder='Eg= 1, 2, 3...')
+        DiabetesPedigreeFunction = st.slider('Diabetes Pedigree Function value', min_value=0.0, max_value=20.0, value=0.627, step=0.1, key='diabetes_pedigree_function')
         more_diabetes_pedigree = {
             "Description": "The Diabetes Pedigree Function measures the genetic predisposition of a person to diabetes.",
-            "Range": "Diabetes Pedigree Function values can vary but are generally positive numbers."
+            "Normal Value": "For a normal person with no known genetic predisposition to diabetes, the Diabetes Pedigree Function value is typically low, often close to 0.0."
+
         }
         if st.button("More (Diabetes Pedigree Function)", key="more_diabetes_pedigree"):
             st.write(more_diabetes_pedigree)
     
     # Age of the Person
     with col2:
-        Age = st.text_input('Age of the Person', placeholder='Eg= 1, 2, 3...')
+        Age = st.slider('Age of the Person', min_value=18.0, max_value=100.0, value=30.0, step=1.0, key='age')
+
         more_age = {
             "Description": "The age of the person in years.",
-            "Range": "Age is a positive integer and should be within a reasonable human lifespan range."
+           
         }
         if st.button("More (Age)", key="more_age"):
             st.write(more_age)
