@@ -105,7 +105,7 @@ if (selected == 'Diabetes Prediction'):
     
     # Diabetes Pedigree Function value
     with col1:
-        DiabetesPedigreeFunction = st.slider('Diabetes Pedigree Function value', min_value=0.0, max_value=10.0, value=0.627, step=0.1, key='diabetes_pedigree_function')
+        DiabetesPedigreeFunction = st.slider('Diabetes Pedigree Function value', min_value=0.0, max_value=8.0, value=0.627, step=0.1, key='diabetes_pedigree_function')
         more_diabetes_pedigree = {
             "Description": "The Diabetes Pedigree Function measures the genetic predisposition of a person to diabetes.",
             "Normal Value": "For a normal person with no known genetic predisposition to diabetes, the Diabetes Pedigree Function value is typically low, often close to 0.0."
@@ -154,74 +154,137 @@ if (selected == 'Heart Disease Prediction'):
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        age = st.text_input('Age', placeholder='Age in years')
-        
-    with col2:
-        sex = st.text_input('Sex', placeholder='1 = male; 0 = female')
-        
-    with col3:
-        cp = st.text_input('Chest Pain types', placeholder='Eg= 0,1,2 or 3')
-        more_cp = {        
-    0: "Value 0 This value represents the absence of chest pain or discomfort. It indicates that the individual reports no chest pain symptoms.",
-    1: "Value 1 This value typically represents mild or non-specific discomfort in the chest. It may include sensations such as minor discomfort, pressure, or a vague feeling of unease. This category is generally considered less severe.",
-    2: "Value 2: The value 3 often represents intense or severe chest pain. It may indicate significant chest discomfort or pain, which is more likely to be associated with heart-related issues. This category can include symptoms such as severe chest pain, tightness, or a crushing sensation."
-}
-        
-        if st.button("More (cp)", key="more_cp"):
-            st.write(more_cp)
-        
-    with col1:
-        trestbps = st.text_input('Resting Blood Pressure (in mm Hg )', placeholder='range varies from 94 to 200')
-        
-    with col2:
-        chol = st.text_input('Serum Cholestoral in mg/dl', placeholder='range varies from 126 to 564')
-        
-    with col3:
-        fbs = st.text_input('Fasting Blood Sugar > 120 mg/dl', placeholder='1 = true; 0 = false.')
-        
-    with col1:
-        restecg = st.text_input('Resting Electrocardiographic results', placeholder='values 0,1,2')
-        
-    with col2:
-        thalach = st.text_input('Maximum Heart Rate achieved', placeholder='range varies from 71 to 202')
-        
-    with col3:
-        exang = st.text_input('Exercise Induced Angina', placeholder='1 = yes; 0 = no')
-        
-    with col1:
-        oldpeak = st.text_input('oldpeak-ST depression induced by exercise relative to rest', placeholder='range varies from 0 to 6.2')
-        
-    with col2:
-        slope = st.text_input('Slope of the peak exercise ST segment(ECG waveform during physical exercise).', placeholder='0:upsloping,1:Flat,2:Downsloping')
-        more_slope = {
-    0: "Value 0 (Upsloping)**: This value represents an ECG (electrocardiogram) pattern where the ST segment of the ECG tracing slopes in an upward direction during the peak of exercise. An upsloping ST segment is typically considered normal and may indicate a lower likelihood of coronary artery disease (CAD). It's often seen in individuals with a healthy heart.",
-    1: "Value 1 (Flat)**: A value of 1 indicates a flat or horizontal ST segment during the peak of exercise. A flat ST segment can be suggestive of certain heart abnormalities or ischemia (reduced blood flow to the heart muscle). It may warrant further investigation and medical evaluation.",
-    2: "Value 2 (Downsloping)**: A value of 2 means that the ST segment of the ECG tracing slopes in a downward direction during the peak of exercise. A downsloping ST segment is more strongly associated with ischemia and can be an indicator of reduced blood flow to the heart muscle during physical exertion. It's often considered abnormal and may warrant medical attention."
-}
-        if st.button("More (slope)", key="more_slope"):
-            st.write(more_slope)
-   
-        
-    with col3:
-        # Description
-       
+        age = st.slider('Age', min_value=0, max_value=100, value=40, key='age')
 
-        ca = st.text_input('Major vessels colored by flourosopy', placeholder='Enter a number from 0 to 3')
-        more_info = {
-    0: "Value 0 means that there are no significant blockages in the major coronary arteries, indicating good blood flow to the heart. Additional information can be added here.",
-    1: "Value 1 suggests that one major coronary artery shows significant blockage or narrowing, indicating some level of blockage. Additional information can be added here.",
-    2: "Value 2 indicates that two major coronary arteries are affected by significant blockages or narrowing, indicating a moderate level of blockage. Additional information can be added here."
-}
-        if st.button("More"):
-            st.write(more_info)
-  
-    
-                
+
+    with col2:
+        sex = st.slider('Sex', min_value=0, max_value=1, value=1, key='sex')
+
+        more_sex = {
+        "Description": "The person's sex (1 = male; 0 = female).",
         
+        }
+
+        if st.button("More (Sex)", key="more_sex"):
+            st.write(more_sex)
+
+    with col3:
+        cp = st.slider('Chest Pain types', min_value=0, max_value=3, value=1, key='cp')
+
+        more_cp = {
+        0: "Value 0 This value represents the absence of chest pain or discomfort. It indicates that the individual reports no chest pain symptoms.",
+        1: "Value 1 This value typically represents mild or non-specific discomfort in the chest. It may include sensations such as minor discomfort, pressure, or a vague feeling of unease. This category is generally considered less severe.",
+        2: "Value 2: The value 3 often represents intense or severe chest pain. It may indicate significant chest discomfort or pain, which is more likely to be associated with heart-related issues. This category can include symptoms such as severe chest pain, tightness, or a crushing sensation."
+        }
+
+        if st.button("More (Chest Pain Types)", key="more_cp"):
+            st.write(more_cp)
+
     with col1:
-        thal = st.text_input('Thal: 0 = normal; 1 = fixed defect; 2 = reversable defect', placeholder='Eg= 0,1, or 2')
+        trestbps = st.slider('Resting Blood Pressure (mm Hg)', min_value=0, max_value=200, value=120, key='trestbps')
+
+        more_trestbps = {
+        "Description": "The person's resting blood pressure measured in mm Hg.",
+        "Normal Value": "For a normal adult, the typical resting blood pressure reading is around 120/80 mm Hg."
+        }
+        if st.button("More (Resting Blood Pressure)", key="more_trestbps"):
+            st.write(more_trestbps)
+
+    with col2:
+        chol = st.slider('Serum Cholesterol (mg/dL)', min_value=100, max_value=400, value=200, key='chol')
+
+        more_chol = {
+        "Description": "The person's serum cholesterol level measured in mg/dL.",
+        "Normal Value": "For a normal person, the typical serum cholesterol level is around 150 to 200 mg/dL."
+        }
+
+        if st.button("More (Serum Cholesterol)", key="more_chol"):
+            st.write(more_chol)
+
+    with col3:
+        fbs = st.slider('Fasting Blood Sugar (>120 mg/dL)', min_value=0, max_value=1, value=0, key='fbs')
+
+        more_fbs = {
+        "Description": "Whether the person has fasting blood sugar greater than 120 mg/dL (1 = true; 0 = false).",
+        "Normal Value": "A normal fasting blood sugar level is typically below 100 mg/dL. A value of 0 (false) in this field indicates a normal fasting blood sugar level."
+        }
+
+        if st.button("More (Fasting Blood Sugar)", key="more_fbs"):
+            st.write(more_fbs)
+
+    with col1:
+        restecg = st.slider('Resting Electrocardiographic Results', min_value=0, max_value=2, value=0, key='restecg')
+
+        more_restecg = {
+        0: "Value 0 indicates a normal resting electrocardiographic result.",
+        1: "Value 1 suggests an abnormal resting electrocardiographic result, which could indicate possible heart-related issues.",
+        2: "Value 2 indicates a result that is probably not relevant for this dataset."
+        }
+
+        if st.button("More (Resting Electrocardiographic Results)", key="more_restecg"):
+            st.write(more_restecg)
+
+    with col2:
+        thalach = st.slider('Maximum Heart Rate Achieved', min_value=50, max_value=220, value=150, key='thalach')
+
+        more_thalach = {
+            "Description": "The maximum heart rate achieved during exercise.",
+            "Normal Value": "The normal maximum heart rate for adults can vary but is often estimated as 220 minus your age."
+        }
+        if st.button("More (Maximum Heart Rate Achieved)", key="more_thalach"):
+            st.write(more_thalach)
+
+    with col3:
+        exang = st.slider('Exercise Induced Angina', min_value=0, max_value=1, value=0, key='exang')
+
+        more_exang = {
+            "Description": "Whether exercise induced angina is present (1 = yes; 0 = no).",
+            "Normal Value": "A normal value of 0 (no) indicates the absence of exercise-induced angina, which is a typical result for a healthy individual."
+        }
+
+        if st.button("More (Exercise Induced Angina)", key="more_exang"):
+            st.write(more_exang)
+
+    with col1:
+        oldpeak = st.slider('ST Depression Induced by Exercise', min_value=0.0, max_value=6.2, value=0.0, step=0.1, key='oldpeak')
+
+        more_oldpeak = {
+            "Description": "ST depression induced by exercise relative to rest (measured in mm).",
+            "Normal Value": "The normal range for ST depression values can vary. It's important to consult with a healthcare professional for interpretation in a clinical context."
+        }
+
+        if st.button("More (ST Depression)", key="more_oldpeak"):
+            st.write(more_oldpeak)
+
+
+
         
-        
+    
+    with col3:
+        ca = st.slider('Major Vessels Colored by Fluoroscopy', min_value=0, max_value=3, value=0, key='ca')
+
+        more_ca = {
+            0: "Value 0 means that there are no significant blockages in the major coronary arteries, indicating good blood flow to the heart.",
+            1: "Value 1 suggests that one major coronary artery shows significant blockage or narrowing, indicating some level of blockage.",
+            2: "Value 2 indicates that two major coronary arteries are affected by significant blockages or narrowing, indicating a moderate level of blockage.",
+            3: "Value 3 may indicate that three major coronary arteries have significant blockages, suggesting a higher level of blockage and potentially more severe heart disease."
+        }
+
+        if st.button("More (Major Vessels Colored by Fluoroscopy)", key="more_ca"):
+            st.write(more_ca)
+
+    with col1:
+        thal = st.slider('Thal (0 = Normal, 1 = Fixed Defect, 2 = Reversible Defect)', min_value=0, max_value=2, value=0, key='thal')
+
+        more_thal = {
+            0: "Value 0 indicates a normal thalassemia test result.",
+            1: "Value 1 suggests a fixed defect in the thalassemia test, which can be associated with heart issues.",
+            2: "Value 2 indicates a reversible defect in the thalassemia test, which may also be related to heart problems."
+        }
+
+        if st.button("More (Thal)", key="more_thal"):
+            st.write(more_thal)
+            
      
      
     # code for Prediction
