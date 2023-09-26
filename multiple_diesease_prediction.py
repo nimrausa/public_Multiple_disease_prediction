@@ -306,9 +306,9 @@ if (selected == 'Heart Disease Prediction'):
                         
         b = np.array( heart_prediction, dtype=float) #  convert using numpy
         if (b[0] == 1):
-          heart_diagnosis = 'The person is having heart disease'
-        else:
           heart_diagnosis = 'The person does not have any heart disease'
+        else:
+          heart_diagnosis = 'The person is having heart disease'
         
     st.success(heart_diagnosis)
         
