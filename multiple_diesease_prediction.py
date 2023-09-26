@@ -110,7 +110,7 @@ if (selected == 'Diabetes Prediction'):
     
     # Diabetes Pedigree Function value
     with col1:
-        DiabetesPedigreeFunction = st.slider('Diabetes Pedigree Function value', min_value=0.0, max_value=20.0, value=0.627, step=0.1, key='diabetes_pedigree_function')
+        DiabetesPedigreeFunction = st.slider('Diabetes Pedigree Function value', min_value=0.0, max_value=8.0, value=0.627, step=0.1, key='diabetes_pedigree_function')
         more_diabetes_pedigree = {
             "Description": "The Diabetes Pedigree Function measures the genetic predisposition of a person to diabetes.",
             "Normal Value": "For a normal person with no known genetic predisposition to diabetes, the Diabetes Pedigree Function value is typically low, often close to 0.0."
