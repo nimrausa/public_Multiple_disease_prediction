@@ -48,12 +48,7 @@ if (selected == 'Diabetes Prediction'):
     # Number of Pregnancies
     with col1:
         Pregnancies = st.slider('Number of Pregnancies', min_value=0.0, max_value=17.0, value=0.1, key='pregnancies')
-        more_pregnancies = {
-            "Description": "The number of times the person has been pregnant.",
-            
-        }
-        if st.button("More (Pregnancies)", key="more_pregnancies"):
-            st.write(more_pregnancies)
+        
     
     # Glucose Level
     with col2:
