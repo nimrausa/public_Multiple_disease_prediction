@@ -305,10 +305,10 @@ if (selected == 'Heart Disease Prediction'):
         heart_prediction = heart_disease_model.predict(a)  
                         
         b = np.array( heart_prediction, dtype=float) #  convert using numpy
-        if (b[0] == 1):
-          heart_diagnosis = 'The person does not have any heart disease'
-        else:
+        if (b[0] == 0):
           heart_diagnosis = 'The person is having heart disease'
+        else:
+          heart_diagnosis = 'The person does not have any heart disease'
         
     st.success(heart_diagnosis)
         
@@ -479,10 +479,6 @@ if (selected == "Parkinsons Prediction"):
         if st.button("More (NHR)", key="more_nhr"):
             st.write(more_nhr)
 
-# Continue with the rest of the code...
-
-    
-    # ... (Previous code)
 
     with col1:
         HNR = st.slider('HNR (Harmonics-to-noise ratio) - Measures of the ratio of noise to tonal components in the voice:', min_value=0, max_value=3, value=1, key='hnr')
