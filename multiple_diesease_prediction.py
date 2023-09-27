@@ -332,7 +332,8 @@ if (selected == "Parkinsons Prediction"):
         fo = st.slider('MDVP:Fo(Hz) - Average vocal fundamental frequency (fo):', min_value=50, max_value=300, value=150, key='fo')
 
         more_fo = {
-            "Normal Value": "For a typical human voice, the fundamental frequency (fo) falls within the range of 50 Hz to 300 Hz."
+            "Description": "The average vocal fundamental frequency (fo) represents the pitch of the voice. It is typically measured in Hertz (Hz).",
+            "Normal Value (Healthy Person)": "For a healthy individual, the normal fo falls within the range of 80 Hz to 250 Hz."
         }
 
         if st.button("More (fo)", key="more_fo"):
@@ -342,7 +343,8 @@ if (selected == "Parkinsons Prediction"):
         fhi = st.slider('MDVP:Fhi(Hz) - Maximum vocal fundamental frequency (fhi):', min_value=80, max_value=350, value=200, key='fhi')
 
         more_fhi = {
-            "Normal Value": "The maximum vocal fundamental frequency (fhi) is expected to be higher than the average fo, so a typical range might be 80 Hz to 350 Hz."
+            "Description": "The maximum vocal fundamental frequency (fhi) represents the highest pitch achieved during speech.",
+            "Normal Value (Healthy Person)": "In a healthy individual, the fhi is typically above 120 Hz."
         }
 
         if st.button("More (Fhi)", key="more_fhi"):
@@ -352,7 +354,8 @@ if (selected == "Parkinsons Prediction"):
         flo = st.slider('MDVP:Flo(Hz) - Minimum vocal fundamental frequency (flo):', min_value=40, max_value=150, value=80, key='flo')
 
         more_flo = {
-            "Normal Value": "The minimum vocal fundamental frequency (flo) is expected to be lower than the average fo, so a typical range might be 40 Hz to 150 Hz."
+            "Description": "The minimum vocal fundamental frequency (flo) represents the lowest pitch achieved during speech.",
+            "Normal Value (Healthy Person)": "In a healthy individual, the flo is typically above 50 Hz."
         }
 
         if st.button("More (flo)", key="more_flo"):
@@ -362,7 +365,8 @@ if (selected == "Parkinsons Prediction"):
         Jitter_percent = st.slider('MDVP:Jitter(%) - Measures of variation in fundamental frequency (Jitter_percent):', min_value=0.0, max_value=1.0, value=0.2, step=0.01, key='jitter_percent')
 
         more_Jitter_percent = {
-            "Normal Value": "Jitter percentage is typically expressed as a decimal fraction, ranging between 0 and 1."
+            "Description": "Jitter percentage measures variations in the pitch of the voice. It is typically expressed as a percentage.",
+            "Normal Value (Healthy Person)": "For a healthy individual, the jitter percentage is usually below 0.5%."
         }
 
         if st.button("More (Jitter_percent)", key="more_Jitter_percent"):
@@ -372,7 +376,8 @@ if (selected == "Parkinsons Prediction"):
         Jitter_Abs = st.slider('MDVP:Jitter(Abs) - Measures of variation in fundamental frequency (Jitter_Abs):', min_value=0.0, max_value=0.1, value=0.02, step=0.001, key='jitter_abs')
 
         more_Jitter_Abs = {
-            "Normal Value": "Jitter absolute values are generally small, typically below 0.01."
+            "Description": "Jitter absolute values represent the absolute variation in pitch during speech.",
+            "Normal Value (Healthy Person)": "In a healthy individual, jitter absolute values are typically below 0.02."
         }
 
         if st.button("More (Jitter_Abs)", key="more_Jitter_Abs"):
@@ -382,7 +387,8 @@ if (selected == "Parkinsons Prediction"):
         RAP = st.slider('MDVP:RAP - MDVP relative amplitude perturbation (RAP):', min_value=0.0, max_value=0.1, value=0.02, step=0.001, key='rap')
 
         more_RAP = {
-            "Normal Value": "RAP values are similar to Jitter absolute values and are generally small."
+            "Description": "RAP measures variations in the amplitude (loudness) of speech sounds.",
+            "Normal Value (Healthy Person)": "In a healthy individual, RAP values are typically below 0.03."
         }
 
         if st.button("More (RAP)", key="more_RAP"):
@@ -398,12 +404,13 @@ if (selected == "Parkinsons Prediction"):
         Shimmer = st.slider('MDVP:Shimmer - Measures of variation in amplitude:', min_value=0.0, max_value=1.0, value=0.2, step=0.01, key='shimmer')
 
         more_shimmer = {
-            "Description": "Shimmer is a measure of variation in amplitude. It represents the variability in the amplitude of vocal fold vibrations.",
-            "Normal Value": "Shimmer values are typically expressed as a decimal fraction, ranging between 0 and 1."
+            "Description": "Shimmer measures variations in the loudness or amplitude of voice signals during speech.",
+            "Normal Value (Healthy Person)": "For a healthy individual, shimmer values are typically below 0.4."
         }
 
         if st.button("More (Shimmer)", key="more_shimmer"):
             st.write(more_shimmer)
+
 
 
     with col1:
