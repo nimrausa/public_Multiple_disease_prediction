@@ -329,56 +329,82 @@ if (selected == "Parkinsons Prediction"):
             st.write(description)
 
     with col1:
-        fo = st.slider('MDVP:Fo(Hz)', *fo_range, step=1, value=100)
-        st.write(f"Typical Value: {fo} Hz")
-        fo_description = "MDVP:Fo(Hz) represents the average vocal fundamental frequency (fo). It typically falls within the range of 50 Hz to 300 Hz."
-        display_more_option("fo", fo_description)
+        fo = st.slider('MDVP:Fo(Hz) - Average vocal fundamental frequency (fo):', min_value=50, max_value=300, value=150, key='fo')
+
+        more_fo = {
+            "Normal Value": "For a typical human voice, the fundamental frequency (fo) falls within the range of 50 Hz to 300 Hz."
+        }
+
+        if st.button("More (fo)", key="more_fo"):
+            st.write(more_fo)
 
     with col2:
-        fhi = st.slider('MDVP:Fhi(Hz)', *fhi_range, step=1, value=150)
-        st.write(f"Typical Value: {fhi} Hz")
-        fhi_description = "MDVP:Fhi(Hz) represents the maximum vocal fundamental frequency (fhi). It is expected to be higher than the average fundamental frequency, with a typical range of 80 Hz to 350 Hz."
-        display_more_option("fhi", fhi_description)
+        fhi = st.slider('MDVP:Fhi(Hz) - Maximum vocal fundamental frequency (fhi):', min_value=80, max_value=350, value=200, key='fhi')
+
+        more_fhi = {
+            "Normal Value": "The maximum vocal fundamental frequency (fhi) is expected to be higher than the average fo, so a typical range might be 80 Hz to 350 Hz."
+        }
+
+        if st.button("More (Fhi)", key="more_fhi"):
+            st.write(more_fhi)
 
     with col3:
-        flo = st.slider('MDVP:Flo(Hz)', *flo_range, step=1, value=80)
-        st.write(f"Typical Value: {flo} Hz")
-        flo_description = "MDVP:Flo(Hz) represents the minimum vocal fundamental frequency (flo). It is expected to be lower than the average fundamental frequency, with a typical range of 40 Hz to 150 Hz."
-        display_more_option("flo", flo_description)
+        flo = st.slider('MDVP:Flo(Hz) - Minimum vocal fundamental frequency (flo):', min_value=40, max_value=150, value=80, key='flo')
+
+        more_flo = {
+            "Normal Value": "The minimum vocal fundamental frequency (flo) is expected to be lower than the average fo, so a typical range might be 40 Hz to 150 Hz."
+        }
+
+        if st.button("More (flo)", key="more_flo"):
+            st.write(more_flo)
 
     with col1:
-        jitter_percent = st.slider('MDVP:Jitter(%)', *jitter_percent_range, step=0.01, value=0.1)
-        st.write(f"Typical Value: {jitter_percent}%")
-        jitter_percent_description = "MDVP:Jitter(%) measures the variation in fundamental frequency. It is typically expressed as a decimal fraction, ranging from 0 to 1."
-        display_more_option("jitter_percent", jitter_percent_description)
+        Jitter_percent = st.slider('MDVP:Jitter(%) - Measures of variation in fundamental frequency (Jitter_percent):', min_value=0.0, max_value=1.0, value=0.2, step=0.01, key='jitter_percent')
+
+        more_Jitter_percent = {
+            "Normal Value": "Jitter percentage is typically expressed as a decimal fraction, ranging between 0 and 1."
+        }
+
+        if st.button("More (Jitter_percent)", key="more_Jitter_percent"):
+            st.write(more_Jitter_percent)
 
     with col2:
-        jitter_abs = st.slider('MDVP:Jitter(Abs)', *jitter_abs_range, step=0.001, value=0.001)
-        st.write(f"Typical Value: {jitter_abs}")
-        jitter_abs_description = "MDVP:Jitter(Abs) measures the variation in fundamental frequency. It is typically a small value, often below 0.01."
-        display_more_option("jitter_abs", jitter_abs_description)
+        Jitter_Abs = st.slider('MDVP:Jitter(Abs) - Measures of variation in fundamental frequency (Jitter_Abs):', min_value=0.0, max_value=0.1, value=0.02, step=0.001, key='jitter_abs')
+
+        more_Jitter_Abs = {
+            "Normal Value": "Jitter absolute values are generally small, typically below 0.01."
+        }
+
+        if st.button("More (Jitter_Abs)", key="more_Jitter_Abs"):
+            st.write(more_Jitter_Abs)
 
     with col3:
-        rap = st.slider('MDVP:RAP', *rap_range, step=0.001, value=0.001)
-        st.write(f"Typical Value: {rap}")
-        rap_description = "MDVP:RAP represents the MDVP relative amplitude perturbation (RAP). Similar to Jitter(Abs), RAP values are generally small."
-        display_more_option("rap", rap_description)
+        RAP = st.slider('MDVP:RAP - MDVP relative amplitude perturbation (RAP):', min_value=0.0, max_value=0.1, value=0.02, step=0.001, key='rap')
+
+        more_RAP = {
+            "Normal Value": "RAP values are similar to Jitter absolute values and are generally small."
+        }
+
+        if st.button("More (RAP)", key="more_RAP"):
+            st.write(more_RAP)
 
     with col1:
-        ppq = st.slider('MDVP:PPQ', *ppq_range, step=0.001, value=0.001)
-        ppq_description = "MDVP:PPQ represents the MDVP five-point period perturbation quotient (PPQ). Similar to other jitter measures, PPQ values are generally small."
-        display_more_option("ppq", ppq_description)
+        PPQ = st.slider('MDVP:PPQ - MDVP five-point period perturbation quotient (PPQ):', min_value=0.0, max_value=0.1, value=0.02, step=0.001, key='ppq')
 
     with col2:
-        ddp = st.slider('Jitter:DDP', *ddp_range, step=1, value=1)
-        ddp_description = "Jitter:DDP represents the average absolute difference of differences between jitter cycles. The typical range can vary."
-        display_more_option("ddp", ddp_description)
+        DDP = st.slider('Jitter:DDP - Average absolute difference of differences between jitter cycles:', min_value=0.0, max_value=0.1, value=0.02, step=0.001, key='ddp')
 
     with col3:
-        shimmer = st.slider('MDVP:Shimmer', *shimmer_range, step=0.01, value=0.1)
-        st.write(f"Typical Value: {shimmer}")
-        shimmer_description = "MDVP:Shimmer measures variation in amplitude. It is typically expressed as a decimal fraction, ranging from 0 to 1."
-        display_more_option("shimmer", shimmer_description)
+        Shimmer = st.slider('MDVP:Shimmer - Measures of variation in amplitude:', min_value=0.0, max_value=1.0, value=0.2, step=0.01, key='shimmer')
+
+        more_shimmer = {
+            "Description": "Shimmer is a measure of variation in amplitude. It represents the variability in the amplitude of vocal fold vibrations.",
+            "Normal Value": "Shimmer values are typically expressed as a decimal fraction, ranging between 0 and 1."
+        }
+
+        if st.button("More (Shimmer)", key="more_shimmer"):
+            st.write(more_shimmer)
+
 
     with col1:
         Shimmer_dB = st.text_input('MDVP:Shimmer(dB) - Measures of variation in amplitude IN dB', placeholder='Eg= 1, 2, 3...')
