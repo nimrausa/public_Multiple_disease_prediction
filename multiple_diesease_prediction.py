@@ -29,20 +29,20 @@ sidebar_icon_style = """
 .sidebar .sidebar-content .stButton>button {
     display: flex;
     align-items: left;
-    width: 100%;
+    width: 50%;
     padding: 10px 16px;
     font-size: 10px;
     font-weight: bold;
     background-color: #f63366;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 .sidebar .sidebar-content .stButton>button svg {
-    width: 20px;
-    height: 10px;
+    width: 10px;
+    height: 5px;
     margin-right: 10px;
     fill: white;
 }
