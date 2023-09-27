@@ -31,7 +31,7 @@ sidebar_icon_style = """
     align-items: left;
     width: 100%;
     padding: 10px 16px;
-    font-size: 18px;
+    font-size: 10px;
     font-weight: bold;
     background-color: #f63366;
     color: white;
@@ -41,8 +41,8 @@ sidebar_icon_style = """
 }
 
 .sidebar .sidebar-content .stButton>button svg {
-    width: 28px;
-    height: 18px;
+    width: 20px;
+    height: 10px;
     margin-right: 10px;
     fill: white;
 }
