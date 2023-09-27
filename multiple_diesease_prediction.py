@@ -305,7 +305,7 @@ if (selected == 'Heart Disease Prediction'):
         heart_prediction = heart_disease_model.predict(a)  
                         
         b = np.array( heart_prediction, dtype=float) #  convert using numpy
-        if (b[0] == 0):
+        if (b[0] == 1):
           heart_diagnosis = 'The person is having heart disease'
         else:
           heart_diagnosis = 'The person does not have any heart disease'
