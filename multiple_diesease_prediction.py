@@ -507,7 +507,7 @@ if (selected == "Parkinsons Prediction"):
             st.write(more_rpde)
 
     with col3:
-        DFA = st.slider('DFA - Signal fractal scaling exponent of detrended fluctuation analysis:', min_value=0, max_value=2, value=1, step=0.01, key='dfa')
+        DFA = st.slider('DFA - Signal fractal scaling exponent of detrended fluctuation analysis:', min_value=0.0, max_value=2.0, value=1.0, step=0.01, key='dfa')
 
         more_dfa = {
             "Description": "DFA measures the self-similarity or fractal scaling properties of a signal. It assesses the presence of long-range correlations.",
