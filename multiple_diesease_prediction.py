@@ -28,7 +28,7 @@ sidebar_icon_style = """
 <style>
 .sidebar .sidebar-content .stButton>button {
     display: flex;
-    align-items: center;
+    align-items: left;
     width: 100%;
     padding: 10px 16px;
     font-size: 18px;
@@ -41,8 +41,8 @@ sidebar_icon_style = """
 }
 
 .sidebar .sidebar-content .stButton>button svg {
-    width: 98px;
-    height: 98px;
+    width: 28px;
+    height: 18px;
     margin-right: 10px;
     fill: white;
 }
