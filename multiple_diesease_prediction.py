@@ -414,123 +414,154 @@ if (selected == "Parkinsons Prediction"):
 
 
     with col1:
-        Shimmer_dB = st.text_input('MDVP:Shimmer(dB) - Measures of variation in amplitude IN dB', placeholder='Eg= 1, 2, 3...')
+        Shimmer_dB = st.slider('MDVP:Shimmer(dB) - Measures of variation in amplitude IN dB:', min_value=0, max_value=3, value=1, key='shimmer_db')
+
         more_shimmer_db = {
             "Description": "Shimmer (dB) measures the variation in amplitude in decibels (dB). It is another way to quantify amplitude variation.",
-            "Range": "Shimmer (dB) values can vary but are generally small and positive numbers."
-}
-        if st.button("More (Shimmer dB)",key="more_shimmer_db"):
+            "Normal Value (Healthy Person)": "For a healthy individual, the normal shimmer (dB) value is typically below 1 dB."
+        }
+
+        if st.button("More (Shimmer dB)", key="more_shimmer_db"):
             st.write(more_shimmer_db)
-    
+
     with col2:
-        APQ3 = st.text_input('Shimmer:APQ3 - Measures of variation in amplitude (Three-point amplitude perturbation quotient)', placeholder='Eg= 1, 2, 3...')
+        APQ3 = st.slider('Shimmer:APQ3 - Measures of variation in amplitude (Three-point amplitude perturbation quotient):', min_value=0, max_value=3, value=1, key='apq3')
+
         more_apq3 = {
             "Description": "APQ3 is a measure of amplitude perturbation. It quantifies amplitude variations using a three-point method.",
-            "Range": "APQ3 values can vary but are generally positive numbers."
-}
+            "Normal Value (Healthy Person)": "In a healthy individual, the normal APQ3 value is typically below 1."
+        }
+
         if st.button("More (APQ3)", key="more_apq3"):
             st.write(more_apq3)
-    
-    
-            
+
     with col3:
-        APQ5 = st.text_input('Shimmer:APQ5 - Measures of variation in amplitude (Five-point amplitude perturbation quotient)', placeholder='Eg= 1, 2, 3...')
+        APQ5 = st.slider('Shimmer:APQ5 - Measures of variation in amplitude (Five-point amplitude perturbation quotient):', min_value=0, max_value=3, value=1, key='apq5')
+
         more_apq5 = {
             "Description": "APQ5 is another measure of amplitude perturbation, using a five-point method to quantify amplitude variations.",
-            "Range": "APQ5 values can vary but are generally positive numbers."
-}
+            "Normal Value (Healthy Person)": "In a healthy individual, the normal APQ5 value is typically below 1."
+        }
+
         if st.button("More (APQ5)", key="more_apq5"):
             st.write(more_apq5)
-    
+
     with col1:
-        APQ = st.text_input('MDVP:APQ - Measures of variation in amplitude (MDVP 11-point amplitude perturbation quotient)', placeholder='Eg= 1, 2, 3...')
+        APQ = st.slider('MDVP:APQ - Measures of variation in amplitude (MDVP 11-point amplitude perturbation quotient):', min_value=0, max_value=3, value=1, key='apq')
+
         more_apq = {
             "Description": "MDVP:APQ is a more comprehensive measure of amplitude perturbation, using an 11-point method to quantify amplitude variations.",
-            "Range": "MDVP:APQ values can vary but are generally positive numbers."
-}
+            "Normal Value (Healthy Person)": "In a healthy individual, the normal MDVP:APQ value is typically below 1."
+        }
+
         if st.button("More (MDVP:APQ)", key="more_apq"):
             st.write(more_apq)
-    
+
     with col2:
-        DDA = st.text_input('Shimmer:DDA - Measures of Average absolute differences between the amplitudes of consecutive periods', placeholder='Eg= 1, 2, 3...')
+        DDA = st.slider('Shimmer:DDA - Measures of Average absolute differences between the amplitudes of consecutive periods:', min_value=0, max_value=3, value=1, key='dda')
+
         more_dda = {
             "Description": "DDA measures the average absolute differences between the amplitudes of consecutive periods in the voice signal.",
-            "Range": "DDA values can vary but are generally positive numbers."
-}
+            "Normal Value (Healthy Person)": "In a healthy individual, the normal DDA value is typically below 1."
+        }
+
         if st.button("More (Shimmer:DDA)", key="more_dda"):
             st.write(more_dda)
-    
+
     with col3:
-        NHR = st.text_input('NHR (Noise-to-harmonics ratio) - Measures of the ratio of noise to tonal components in the voice', placeholder='Eg= 1, 2, 3...')
+        NHR = st.slider('NHR (Noise-to-harmonics ratio) - Measures of the ratio of noise to tonal components in the voice:', min_value=0, max_value=3, value=1, key='nhr')
+
         more_nhr = {
             "Description": "NHR quantifies the ratio of noise to tonal components in the voice signal. It helps assess the noisiness of the voice.",
-            "Range": "NHR values can vary but are generally positive numbers."
-}
-        if st.button("More (NHR)",  key="more_nhr"):
+            "Normal Value (Healthy Person)": "In a healthy individual, the normal NHR value is typically below 1."
+        }
+
+        if st.button("More (NHR)", key="more_nhr"):
             st.write(more_nhr)
+
+# Continue with the rest of the code...
+
     
+    # ... (Previous code)
+
     with col1:
-        HNR = st.text_input('HNR (Harmonics-to-noise ratio) - Measures of the ratio of noise to tonal components in the voice', placeholder='Eg= 1, 2, 3...')
+        HNR = st.slider('HNR (Harmonics-to-noise ratio) - Measures of the ratio of noise to tonal components in the voice:', min_value=0, max_value=3, value=1, key='hnr')
+
         more_hnr = {
             "Description": "HNR quantifies the ratio of harmonics to noise in the voice signal. Higher values indicate clearer tones.",
-            "Range": "HNR values can vary but are generally positive numbers."
-}
+            "Normal Value (Healthy Person)": "In a healthy individual, the normal HNR value is typically below 1."
+        }
+
         if st.button("More (HNR)", key="more_hnr"):
             st.write(more_hnr)
-            
+
     with col2:
-        RPDE = st.text_input('RPDE - Recurrence period density entropy measure', placeholder='Eg= 0.1, 0.2, 0.3...')
+        RPDE = st.slider('RPDE - Recurrence period density entropy measure:', min_value=0, max_value=3, value=1, key='rpde')
+
         more_rpde = {
             "Description": "RPDE is a measure of recurrence period density entropy. It quantifies the irregularity of the time intervals between similar patterns in a signal.",
-            "Range": "RPDE values can vary but are generally positive numbers."
-}
+            "Normal Value (Healthy Person)": "In a healthy individual, the normal RPDE value is typically below 1."
+        }
+
         if st.button("More (RPDE)", key="more_rpde"):
             st.write(more_rpde)
-    
+
     with col3:
-        DFA = st.text_input('DFA - Signal fractal scaling exponent of detrended fluctuation analysis', placeholder='Eg= 0.1, 0.2, 0.3...')
+        DFA = st.slider('DFA - Signal fractal scaling exponent of detrended fluctuation analysis:', min_value=0, max_value=2, value=1, step=0.01, key='dfa')
+
         more_dfa = {
             "Description": "DFA measures the self-similarity or fractal scaling properties of a signal. It assesses the presence of long-range correlations.",
-            "Range": "DFA values can vary, typically between 0 and 2."
-}
+            "Normal Value (Healthy Person)": "In a healthy individual, the normal DFA value typically falls within the range of 0.5 to 1.5."
+        }
+
         if st.button("More (DFA)", key="more_dfa"):
             st.write(more_dfa)
-    
+
     with col1:
-        spread1 = st.text_input('spread1 - Two nonlinear measures of fundamental', placeholder='Eg= 1, 2, 3...')
+        spread1 = st.slider('spread1 - Two nonlinear measures of fundamental:', min_value=0, max_value=3, value=1, key='spread1')
+
         more_spread1 = {
             "Description": "Spread1 includes two nonlinear measures related to fundamental frequency variation. It assesses the spread of the frequency distribution.",
-            "Range": "Spread1 values can vary and depend on the specific measurement method."
-}
+            "Normal Value (Healthy Person)": "In a healthy individual, the normal spread1 value is typically below 1."
+        }
+
         if st.button("More (spread1)", key="more_spread1"):
             st.write(more_spread1)
-    
+
     with col2:
-        spread2 = st.text_input('spread2 - Nonlinear measures of fundamental frequency variation', placeholder='Eg= 1, 2, 3...')
+        spread2 = st.slider('spread2 - Nonlinear measures of fundamental frequency variation:', min_value=0, max_value=3, value=1, key='spread2')
+
         more_spread2 = {
             "Description": "Spread2 includes nonlinear measures related to fundamental frequency variation. It assesses the spread of the frequency distribution.",
-            "Range": "Spread2 values can vary and depend on the specific measurement method."
-}
-        if st.button("More (spread2)",  key="more_spread2"):
+            "Normal Value (Healthy Person)": "In a healthy individual, the normal spread2 value is typically below 1."
+        }
+
+        if st.button("More (spread2)", key="more_spread2"):
             st.write(more_spread2)
-    
+
     with col3:
-        D2 = st.text_input('D2 (Correlation dimension) - Nonlinear dynamical complexity measures', placeholder='Eg= 1, 2, 3...')
+        D2 = st.slider('D2 (Correlation dimension) - Nonlinear dynamical complexity measures:', min_value=0, max_value=3, value=1, key='d2')
+
         more_d2 = {
             "Description": "D2, or Correlation dimension, is a measure of the nonlinear dynamical complexity of a system. It quantifies the complexity of attractors in a phase space.",
-            "Range": "D2 values can vary but are generally positive numbers."
-}
-        if st.button("More (D2)",key="more_d2"):
+            "Normal Value (Healthy Person)": "In a healthy individual, the normal D2 value is typically below 1."
+        }
+
+        if st.button("More (D2)", key="more_d2"):
             st.write(more_d2)
-    
+
     with col1:
-        PPE = st.text_input('PPE (Pitch period entropy) - Nonlinear measures of fundamental frequency variation', placeholder='Eg= 1, 2, 3...')
+        PPE = st.slider('PPE (Pitch period entropy) - Nonlinear measures of fundamental frequency variation:', min_value=0, max_value=3, value=1, key='ppe')
+
         more_ppe = {
             "Description": "PPE, or Pitch period entropy, measures the entropy of pitch periods in a speech signal. It quantifies the irregularity of pitch periods.",
-            "Range": "PPE values can vary but are generally positive numbers."
-}
-        if st.button("More (PPE)",key="more_ppe"):
+            "Normal Value (Healthy Person)": "In a healthy individual, the normal PPE value is typically below 1."
+        }
+
+        if st.button("More (PPE)", key="more_ppe"):
             st.write(more_ppe)
+
+
 
     # code for Prediction
     parkinsons_diagnosis = ''
