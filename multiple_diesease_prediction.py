@@ -21,23 +21,48 @@ parkinsons_model=pickle.load(open('parkinsons_model.sav','rb'))
 
 
 
+import streamlit as st
+
 # Define custom CSS styles for sidebar icons
 sidebar_icon_style = """
 <style>
-.sidebar .sidebar-content .stSelectbox > .stSelectbox-container > .stSelectbox-display > .stSelectbox-display-content > .stIcon {
-    font-size: 24px;
-    color: #f63366; /* Change the color as desired */
+.sidebar .sidebar-content .stButton>button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #f63366;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.sidebar .sidebar-content .stButton>button svg {
+    width: 98px;
+    height: 98px;
+    margin-right: 10px;
+    fill: white;
+}
+
+.sidebar .sidebar-content .stButton>button:hover {
+    background-color: #ff5678;
 }
 </style>
 """
 
-st.markdown(sidebar_icon_style, unsafe_allow_html=True)
-
-with st.sidebar:
-    selected = st.selectbox(
-        'Multiple Disease Prediction System',
+st.markdown(
+        "<h1 style='text-align: center; color: #f63366;'>Multiple Disease Prediction System</h1>",
+        unsafe_allow_html=True,
+    )
+    
+selected = option_menu(
+        'Choose a Disease Prediction:',
         ['Diabetes Prediction', 'Heart Disease Prediction', 'Parkinsons Prediction'],
-        index=0
+        icons=['activity', 'heart', 'person'],
+        default_index=0
     )
 
     
