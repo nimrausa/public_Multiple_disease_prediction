@@ -24,14 +24,17 @@ parkinsons_model=pickle.load(open('parkinsons_model.sav','rb'))
 
 # sidebar for navigation
 with st.sidebar:
+    st.markdown(
+        "<h1 style='text-align: center; color: #f63366;'>Multiple Disease Prediction System</h1>",
+        unsafe_allow_html=True,
+    )
     
-    selected = option_menu('Multiple Disease Prediction System',
-                          
-                          ['Diabetes Prediction',
-                           'Heart Disease Prediction',
-                           'Parkinsons Prediction'],
-                          icons=['activity','heart','person'],
-                          default_index=0)
+    selected = option_menu(
+        'Choose a Disease Prediction:',
+        ['Diabetes Prediction', 'Heart Disease Prediction', 'Parkinsons Prediction'],
+        icons=['activity', 'heart', 'person'],
+        default_index=0
+    )
     
     
 # Diabetes Prediction Page
