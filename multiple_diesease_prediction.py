@@ -414,7 +414,7 @@ if (selected == "Parkinsons Prediction"):
 
 
     with col1:
-        Shimmer_dB = st.slider('MDVP:Shimmer(dB) - Measures of variation in amplitude IN dB:', min_value=0, max_value=3, value=1, key='shimmer_db')
+        Shimmer_dB = st.slider('MDVP:Shimmer(dB) - Measures of variation in amplitude IN dB:', min_value=0.0, max_value=3.0, value=1.0, key='shimmer_db')
 
         more_shimmer_db = {
             "Description": "Shimmer (dB) measures the variation in amplitude in decibels (dB). It is another way to quantify amplitude variation.",
