@@ -22,30 +22,19 @@ parkinsons_model=pickle.load(open('parkinsons_model.sav','rb'))
 
 
 # Define custom CSS styles for sidebar icons
-sidebar_button_style = """
+sidebar_icon_style = """
 <style>
-.sidebar .sidebar-content .stButton {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #f63366;
-    border-radius: 10px;
-    transition: background-color 0.3s ease;
-}
-
-.sidebar .sidebar-content .stButton:hover {
-    background-color: #ff5678;
+.sidebar .sidebar-content .stSelectbox > .stSelectbox-container > .stSelectbox-display > .stSelectbox-display-content > .stIcon {
+    font-size: 24px;
+    color: #f63366; /* Change the color as desired */
 }
 </style>
 """
 
-st.markdown(sidebar_button_style, unsafe_allow_html=True)
+st.markdown(sidebar_icon_style, unsafe_allow_html=True)
 
 with st.sidebar:
-    selected = st.radio(
+    selected = st.selectbox(
         'Multiple Disease Prediction System',
         ['Diabetes Prediction', 'Heart Disease Prediction', 'Parkinsons Prediction'],
         index=0
