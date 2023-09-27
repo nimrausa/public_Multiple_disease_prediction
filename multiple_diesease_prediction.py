@@ -272,10 +272,10 @@ if (selected == 'Heart Disease Prediction'):
         ca = st.slider('Major Vessels Colored by Fluoroscopy', min_value=0, max_value=3, value=0, key='ca')
 
         more_ca = {
-            0: "Value 0 means that there are no significant blockages in the major coronary arteries, indicating good blood flow to the heart.",
-            1: "Value 1 suggests that one major coronary artery shows significant blockage or narrowing, indicating some level of blockage.",
-            2: "Value 2 indicates that two major coronary arteries are affected by significant blockages or narrowing, indicating a moderate level of blockage.",
-            3: "Value 3 may indicate that three major coronary arteries have significant blockages, suggesting a higher level of blockage and potentially more severe heart disease."
+            3: "Value 3 means that there are no significant blockages in the major coronary arteries, indicating good blood flow to the heart.",
+            2: "Value 2 suggests that one major coronary artery shows significant blockage or narrowing, indicating some level of blockage.",
+            1: "Value 1 indicates that two major coronary arteries are affected by significant blockages or narrowing, indicating a moderate level of blockage.",
+            0: "Value 0 may indicate that three major coronary arteries have significant blockages, suggesting a higher level of blockage and potentially more severe heart disease."
         }
 
         if st.button("More (Major Vessels Colored by Fluoroscopy)", key="more_ca"):
