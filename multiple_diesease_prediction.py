@@ -117,7 +117,7 @@ if (selected == 'Diabetes Prediction'):
     
     # Insulin Level
     with col2:
-        Insulin = st.slider('Insulin Level', min_value=0.0, max_value=1000.0, value=150.0, key='insulin')
+        Insulin = st.slider('Insulin Level', min_value=0.0, max_value=30.0, value=15.0, key='insulin')
 
         more_insulin = {
             "Description": "The person's insulin level (measured in mu U/mL).",
