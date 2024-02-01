@@ -13,6 +13,31 @@ sys.path.insert(1, "streamlit_option_menu")
 from streamlit_option_menu import option_menu
 import numpy as np
 
+# Function to save review data
+def save_review_data(rating, comment):
+    with open("reviews.txt", "a") as file:
+        file.write(f"Rating: {rating}, Comment: {comment}\n")
+
+# Function to load all reviews
+def load_reviews():
+    try:
+        with open("reviews.txt", "r") as file:
+            return file.readlines()
+    except FileNotFoundError:
+        return []
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #loading the saved models
 diabetes_model=pickle.load(open('diabetes_model.sav','rb'))
@@ -609,5 +634,25 @@ if (selected == "Parkinsons Prediction"):
 
 
 
-    
-   
+        
+    # Add a review section at the end of the page
+    st.header("Review Section")
+
+    # Rating
+    rating = st.selectbox("Rate your experience", [1, 2, 3, 4, 5])
+
+    # Comment
+    comment = st.text_area("Write a short comment about your experience")
+
+    # Optional: Submit button
+    if st.button("Submit Review"):
+        # Save the review data
+        save_review_data(rating, comment)
+        st.success("Thank you for your review!")
+
+    # Load and display all reviews
+    all_reviews = load_reviews()
+    if all_reviews:
+        st.subheader("All Reviews")
+        for review in all_reviews:
+            st.write(review)
