@@ -13,30 +13,25 @@ sys.path.insert(1, "streamlit_option_menu")
 from streamlit_option_menu import option_menu
 import numpy as np
 
-reviews = {"Diabetes Prediction": [], "Heart Disease Prediction": [], "Parkinsons Prediction": []}
-
-# Dictionary to store user reviews and ratings
-reviews_data = {
-    "Diabetes Prediction": {"reviews": [], "ratings": []},
-    "Heart Disease Prediction": {"reviews": [], "ratings": []},
-    "Parkinsons Prediction": {"reviews": [], "ratings": []},
-}
-
-# Dictionary to store user reviews and ratings
-reviews_data = {
-    "Diabetes Prediction": {"reviews": ["Great model!", "Very accurate."], "ratings": [5, 4]},
-    "Heart Disease Prediction": {"reviews": ["Good predictions.", "Helpful tool."], "ratings": [4, 5]},
-    "Parkinsons Prediction": {"reviews": ["Excellent!", "Easy to use."], "ratings": [5, 4]},
-}
+def get_state():
+    return st.session_state
 
 # Function to display and save reviews and ratings
 def display_reviews_and_ratings(selected_disease):
+    state = get_state()
+
+    if "reviews_data" not in state:
+        state.reviews_data = {}
+
+    if selected_disease not in state.reviews_data:
+        state.reviews_data[selected_disease] = {"reviews": [], "ratings": []}
+
     st.subheader("User Reviews:")
-    
+
     # Display existing reviews and ratings
-    existing_reviews = reviews_data[selected_disease]["reviews"]
-    existing_ratings = reviews_data[selected_disease]["ratings"]
-    
+    existing_reviews = state.reviews_data[selected_disease]["reviews"]
+    existing_ratings = state.reviews_data[selected_disease]["ratings"]
+
     if not existing_reviews:
         st.write("No reviews available yet. Be the first to review!")
     else:
@@ -49,21 +44,9 @@ def display_reviews_and_ratings(selected_disease):
 
     if st.button("Submit Review"):
         if user_review.strip():
-            reviews_data[selected_disease]["reviews"].append(user_review)
-            reviews_data[selected_disease]["ratings"].append(user_rating)
+            state.reviews_data[selected_disease]["reviews"].append(user_review)
+            state.reviews_data[selected_disease]["ratings"].append(user_rating)
             st.success("Thank you for your review!")
-
-# Sidebar
-selected = st.sidebar.selectbox("Select Prediction", ("Diabetes Prediction", "Heart Disease Prediction", "Parkinsons Prediction"))
-
-# Main content
-st.title(f"{selected} Prediction")
-
-# Display reviews and ratings for the selected prediction
-display_reviews_and_ratings(selected)
-
-
-
 
 
 
@@ -232,7 +215,7 @@ if (selected == 'Diabetes Prediction'):
         
     st.success(diab_diagnosis)
 
-    #display_reviews_and_ratings("Diabetes Prediction")
+    display_reviews_and_ratings("Diabetes Prediction")
 
 
 # Heart Disease Prediction Page
@@ -402,7 +385,7 @@ if (selected == 'Heart Disease Prediction'):
         
     st.success(heart_diagnosis)
         
-    #display_reviews_and_ratings("Heart Disease Prediction")
+    display_reviews_and_ratings("Heart Disease Prediction")
 
 # Parkinson's Prediction Page
 if (selected == "Parkinsons Prediction"):
@@ -662,7 +645,7 @@ if (selected == "Parkinsons Prediction"):
         
     st.success(parkinsons_diagnosis)
 
-    #display_reviews_and_ratings("Parkinsons Prediction")
+    display_reviews_and_ratings("Parkinsons Prediction")
 
 
         
