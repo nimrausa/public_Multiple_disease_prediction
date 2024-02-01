@@ -610,23 +610,4 @@ if (selected == "Parkinsons Prediction"):
 
 
     
-    st.header("Reviews")
-    
-    # Rating
-    rating = st.slider("Rate your experience (1 to 5 stars)", min_value=1, max_value=5, step=1)
-    
-    # Comment
-    comment = st.text_area("Write a short comment about your experience")
-    
-    # Optional: Submit button
-    if st.button("Submit Review"):
-        # Save the review data
-        save_review_data(rating, comment)
-        st.success("Thank you for your review!")
-    
-    # Load and display all reviews
-    all_reviews = load_reviews()
-    if all_reviews:
-        st.subheader("All Reviews")
-        for review in all_reviews:
-            st.write(review)
+   
