@@ -52,13 +52,6 @@ def display_reviews_and_ratings(selected_disease):
     # Update the session state with the latest reviews data
     st.session_state.reviews_data = reviews_data
 
-# Main content
-st.title("Prediction Reviews and Ratings")
-
-
-
-
-
 
 
 #loading the saved models
