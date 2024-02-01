@@ -15,20 +15,32 @@ import numpy as np
 
 reviews = {"Diabetes Prediction": [], "Heart Disease Prediction": [], "Parkinsons Prediction": []}
 
-# Function to display and save reviews
-def display_reviews(selected_disease):
+# Dictionary to store user reviews and ratings
+reviews_data = {
+    "Diabetes Prediction": {"reviews": [], "ratings": []},
+    "Heart Disease Prediction": {"reviews": [], "ratings": []},
+    "Parkinsons Prediction": {"reviews": [], "ratings": []},
+}
+
+# Function to display and save reviews and ratings
+def display_reviews_and_ratings(selected_disease):
     st.subheader("User Reviews:")
     
-    # Display existing reviews
-    existing_reviews = reviews[selected_disease]
-    for i, review in enumerate(existing_reviews, start=1):
-        st.write(f"Review {i}: {review}")
+    # Display existing reviews and ratings
+    existing_reviews = reviews_data[selected_disease]["reviews"]
+    existing_ratings = reviews_data[selected_disease]["ratings"]
+    
+    for i, (review, rating) in enumerate(zip(existing_reviews, existing_ratings), start=1):
+        st.write(f"Review {i}: {review}, Rating: {rating} ⭐️")
 
-    # Collect new review from user
+    # Collect new review and rating from user
     user_review = st.text_area("Add Your Review (optional):", "")
+    user_rating = st.slider("Add Your Rating (1-5):", 1, 5, 3)
+
     if st.button("Submit Review"):
         if user_review.strip():
-            reviews[selected_disease].append(user_review)
+            reviews_data[selected_disease]["reviews"].append(user_review)
+            reviews_data[selected_disease]["ratings"].append(user_rating)
             st.success("Thank you for your review!")
 
 
@@ -199,7 +211,7 @@ if (selected == 'Diabetes Prediction'):
         
     st.success(diab_diagnosis)
 
-    display_reviews("Diabetes Prediction")
+    display_reviews_and_ratings("Diabetes Prediction")
 
 
 # Heart Disease Prediction Page
@@ -369,8 +381,7 @@ if (selected == 'Heart Disease Prediction'):
         
     st.success(heart_diagnosis)
         
-    display_reviews("Heart Disease Prediction")
-    
+    display_reviews_and_ratings("Heart Disease Prediction")
 
 # Parkinson's Prediction Page
 if (selected == "Parkinsons Prediction"):
@@ -630,7 +641,7 @@ if (selected == "Parkinsons Prediction"):
         
     st.success(parkinsons_diagnosis)
 
-    display_reviews("Parkinsons Prediction")
+    display_reviews_and_ratings("Parkinsons Prediction")
 
 
         
