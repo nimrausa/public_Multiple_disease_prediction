@@ -31,7 +31,7 @@ def display_reviews_and_ratings(selected_disease):
     existing_ratings = st.session_state.reviews_data[selected_disease]["ratings"]
 
     if not existing_reviews:
-        st.write("No reviews available yet. Be the first to review!")
+        st.write("Leave the review!")
     else:
         for i, (review, rating) in enumerate(zip(existing_reviews, existing_ratings), start=1):
             st.write(f"Review {i}: {review}, Rating: {rating} ⭐️")
