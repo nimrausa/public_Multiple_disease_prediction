@@ -17,18 +17,21 @@ def get_state():
     return st.session_state
 
 # Function to display and save reviews and ratings
-def display_reviews_and_ratings(selected_disease):
-    if "reviews_data" not in st.session_state:
-        st.session_state.reviews_data = {}
+@st.cache(allow_output_mutation=True)
+def get_reviews_data():
+    return {}
 
-    if selected_disease not in st.session_state.reviews_data:
-        st.session_state.reviews_data[selected_disease] = {"reviews": [], "ratings": []}
+def display_reviews_and_ratings(selected_disease):
+    reviews_data = get_reviews_data()
+
+    if selected_disease not in reviews_data:
+        reviews_data[selected_disease] = {"reviews": [], "ratings": []}
 
     st.subheader("User Reviews:")
 
     # Display existing reviews and ratings
-    existing_reviews = st.session_state.reviews_data[selected_disease]["reviews"]
-    existing_ratings = st.session_state.reviews_data[selected_disease]["ratings"]
+    existing_reviews = reviews_data[selected_disease]["reviews"]
+    existing_ratings = reviews_data[selected_disease]["ratings"]
 
     if not existing_reviews:
         st.write("Leave the review!")
@@ -42,15 +45,16 @@ def display_reviews_and_ratings(selected_disease):
 
     if st.button("Submit Review"):
         if user_review.strip():
-            st.session_state.reviews_data[selected_disease]["reviews"].append(user_review)
-            st.session_state.reviews_data[selected_disease]["ratings"].append(user_rating)
+            reviews_data[selected_disease]["reviews"].append(user_review)
+            reviews_data[selected_disease]["ratings"].append(user_rating)
             st.success("Thank you for your review!")
+
+    # Update the session state with the latest reviews data
+    st.session_state.reviews_data = reviews_data
 
 # Main content
 st.title("Prediction Reviews and Ratings")
 
-# Display reviews and ratings for the selected prediction
-prediction_type = st.selectbox("Select Prediction", ("Diabetes Prediction", "Heart Disease Prediction", "Parkinsons Prediction"))
 
 
 
