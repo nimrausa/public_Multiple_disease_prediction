@@ -22,6 +22,13 @@ reviews_data = {
     "Parkinsons Prediction": {"reviews": [], "ratings": []},
 }
 
+# Dictionary to store user reviews and ratings
+reviews_data = {
+    "Diabetes Prediction": {"reviews": ["Great model!", "Very accurate."], "ratings": [5, 4]},
+    "Heart Disease Prediction": {"reviews": ["Good predictions.", "Helpful tool."], "ratings": [4, 5]},
+    "Parkinsons Prediction": {"reviews": ["Excellent!", "Easy to use."], "ratings": [5, 4]},
+}
+
 # Function to display and save reviews and ratings
 def display_reviews_and_ratings(selected_disease):
     st.subheader("User Reviews:")
@@ -30,8 +37,11 @@ def display_reviews_and_ratings(selected_disease):
     existing_reviews = reviews_data[selected_disease]["reviews"]
     existing_ratings = reviews_data[selected_disease]["ratings"]
     
-    for i, (review, rating) in enumerate(zip(existing_reviews, existing_ratings), start=1):
-        st.write(f"Review {i}: {review}, Rating: {rating} ⭐️")
+    if not existing_reviews:
+        st.write("No reviews available yet. Be the first to review!")
+    else:
+        for i, (review, rating) in enumerate(zip(existing_reviews, existing_ratings), start=1):
+            st.write(f"Review {i}: {review}, Rating: {rating} ⭐️")
 
     # Collect new review and rating from user
     user_review = st.text_area("Add Your Review (optional):", "")
@@ -42,6 +52,17 @@ def display_reviews_and_ratings(selected_disease):
             reviews_data[selected_disease]["reviews"].append(user_review)
             reviews_data[selected_disease]["ratings"].append(user_rating)
             st.success("Thank you for your review!")
+
+# Sidebar
+selected = st.sidebar.selectbox("Select Prediction", ("Diabetes Prediction", "Heart Disease Prediction", "Parkinsons Prediction"))
+
+# Main content
+st.title(f"{selected} Prediction")
+
+# Display reviews and ratings for the selected prediction
+display_reviews_and_ratings(selected)
+
+
 
 
 
@@ -211,7 +232,7 @@ if (selected == 'Diabetes Prediction'):
         
     st.success(diab_diagnosis)
 
-    display_reviews_and_ratings("Diabetes Prediction")
+    #display_reviews_and_ratings("Diabetes Prediction")
 
 
 # Heart Disease Prediction Page
@@ -381,7 +402,7 @@ if (selected == 'Heart Disease Prediction'):
         
     st.success(heart_diagnosis)
         
-    display_reviews_and_ratings("Heart Disease Prediction")
+    #display_reviews_and_ratings("Heart Disease Prediction")
 
 # Parkinson's Prediction Page
 if (selected == "Parkinsons Prediction"):
@@ -641,7 +662,7 @@ if (selected == "Parkinsons Prediction"):
         
     st.success(parkinsons_diagnosis)
 
-    display_reviews_and_ratings("Parkinsons Prediction")
+    #display_reviews_and_ratings("Parkinsons Prediction")
 
 
         
