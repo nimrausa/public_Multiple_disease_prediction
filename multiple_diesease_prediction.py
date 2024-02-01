@@ -18,19 +18,17 @@ def get_state():
 
 # Function to display and save reviews and ratings
 def display_reviews_and_ratings(selected_disease):
-    state = get_state()
+    if "reviews_data" not in st.session_state:
+        st.session_state.reviews_data = {}
 
-    if "reviews_data" not in state:
-        state.reviews_data = {}
-
-    if selected_disease not in state.reviews_data:
-        state.reviews_data[selected_disease] = {"reviews": [], "ratings": []}
+    if selected_disease not in st.session_state.reviews_data:
+        st.session_state.reviews_data[selected_disease] = {"reviews": [], "ratings": []}
 
     st.subheader("User Reviews:")
 
     # Display existing reviews and ratings
-    existing_reviews = state.reviews_data[selected_disease]["reviews"]
-    existing_ratings = state.reviews_data[selected_disease]["ratings"]
+    existing_reviews = st.session_state.reviews_data[selected_disease]["reviews"]
+    existing_ratings = st.session_state.reviews_data[selected_disease]["ratings"]
 
     if not existing_reviews:
         st.write("No reviews available yet. Be the first to review!")
@@ -38,16 +36,21 @@ def display_reviews_and_ratings(selected_disease):
         for i, (review, rating) in enumerate(zip(existing_reviews, existing_ratings), start=1):
             st.write(f"Review {i}: {review}, Rating: {rating} ⭐️")
 
-    # Collect new review and rating from user
+    # Collect new review and rating from the user
     user_review = st.text_area("Add Your Review (optional):", "")
     user_rating = st.slider("Add Your Rating (1-5):", 1, 5, 3)
 
     if st.button("Submit Review"):
         if user_review.strip():
-            state.reviews_data[selected_disease]["reviews"].append(user_review)
-            state.reviews_data[selected_disease]["ratings"].append(user_rating)
+            st.session_state.reviews_data[selected_disease]["reviews"].append(user_review)
+            st.session_state.reviews_data[selected_disease]["ratings"].append(user_rating)
             st.success("Thank you for your review!")
 
+# Main content
+st.title("Prediction Reviews and Ratings")
+
+# Display reviews and ratings for the selected prediction
+prediction_type = st.selectbox("Select Prediction", ("Diabetes Prediction", "Heart Disease Prediction", "Parkinsons Prediction"))
 
 
 
