@@ -13,44 +13,6 @@ sys.path.insert(1, "streamlit_option_menu")
 from streamlit_option_menu import option_menu
 import numpy as np
 
-def get_state():
-    return st.session_state
-
-# Function to display and save reviews and ratings
-@st.cache(allow_output_mutation=True)
-def get_reviews_data():
-    return {}
-
-def display_reviews_and_ratings(selected_disease):
-    reviews_data = get_reviews_data()
-
-    if selected_disease not in reviews_data:
-        reviews_data[selected_disease] = {"reviews": [], "ratings": []}
-
-    st.subheader("User Reviews:")
-
-    # Display existing reviews and ratings
-    existing_reviews = reviews_data[selected_disease]["reviews"]
-    existing_ratings = reviews_data[selected_disease]["ratings"]
-
-    if not existing_reviews:
-        st.write("Leave the review!")
-    else:
-        for i, (review, rating) in enumerate(zip(existing_reviews, existing_ratings), start=1):
-            st.write(f"Review {i}: {review}, Rating: {rating} ⭐️")
-
-    # Collect new review and rating from the user
-    user_review = st.text_area("Add Your Review (optional):", "")
-    user_rating = st.slider("Add Your Rating (1-5):", 1, 5, 3)
-
-    if st.button("Submit Review"):
-        if user_review.strip():
-            reviews_data[selected_disease]["reviews"].append(user_review)
-            reviews_data[selected_disease]["ratings"].append(user_rating)
-            st.success("Thank you for your review!")
-
-    # Update the session state with the latest reviews data
-    st.session_state.reviews_data = reviews_data
 
 
 
@@ -215,7 +177,7 @@ if (selected == 'Diabetes Prediction'):
         
     st.success(diab_diagnosis)
 
-    display_reviews_and_ratings("Diabetes Prediction")
+
 
 
 # Heart Disease Prediction Page
@@ -385,7 +347,8 @@ if (selected == 'Heart Disease Prediction'):
         
     st.success(heart_diagnosis)
         
-    display_reviews_and_ratings("Heart Disease Prediction")
+    
+    
 
 # Parkinson's Prediction Page
 if (selected == "Parkinsons Prediction"):
@@ -645,7 +608,8 @@ if (selected == "Parkinsons Prediction"):
         
     st.success(parkinsons_diagnosis)
 
-    display_reviews_and_ratings("Parkinsons Prediction")
+
 
 
         
+    
