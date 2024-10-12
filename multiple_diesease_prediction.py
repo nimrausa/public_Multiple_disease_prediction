@@ -34,7 +34,7 @@ def display_reviews_and_ratings(selected_disease):
     existing_ratings = reviews_data[selected_disease]["ratings"]
 
     if not existing_reviews:
-        st.write(" It's incredibly user-friendly, making it accessible to anyone, regardless of their technical expertise. What I love most is how easy it is to understand.The interface is intuitive, and the predictions are presented in the clear and straightforward.⭐️⭐️⭐️⭐️⭐️")
+        st.write(" It's incredibly user-friendly, making it accessible to anyone, regardless of their technical expertise. What I love most is how easy it is to understand.The interface is intuitive, and the predictions are presented in clear and straightforward.⭐️⭐️⭐️⭐️⭐️")
     else:
         for i, (review, rating) in enumerate(zip(existing_reviews, existing_ratings), start=1):
             st.write(f"Review {i}: {review}, Rating: {rating} ⭐️")
