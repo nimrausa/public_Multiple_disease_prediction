@@ -55,10 +55,11 @@ def display_reviews_and_ratings(selected_disease):
 
 
 #loading the saved models
-diabetes_model=pickle.load(open('models/diabetes_model.sav','rb'))
-heart_disease_model=pickle.load(open('models/heart_disease_model.sav','rb'))
-parkinsons_model=pickle.load(open('models/parkinsons_model.sav','rb'))
-
+model_files = {
+    'diabetes_model': 'models/diabetes_model.sav',
+    'heart_disease_model': 'models/heart_disease_model.sav',
+    'parkinsons_model': 'models/parkinsons_model.sav'
+}
 
 
 import streamlit as st
