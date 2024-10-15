@@ -54,21 +54,15 @@ def display_reviews_and_ratings(selected_disease):
 
 
 
+#loading the saved models
+model_files = {
+    'diabetes_model': 'diabetes_model.sav',
+    'heart_disease_model': 'heart_disease_model.sav',
+    'parkinsons_model': 'parkinsons_model.sav'
+}
 
-if os.path.exists('models/diabetes_model.sav'):
-    diabetes_model = pickle.load(open('models/diabetes_model.sav', 'rb'))
-else:
-    st.error("Diabetes model file not found. Please check the file path.")
 
-if os.path.exists('models/heart_disease_model.sav'):
-    heart_disease_model = pickle.load(open('models/heart_disease_model.sav', 'rb'))
-else:
-    st.error("Heart disease model file not found. Please check the file path.")
-
-if os.path.exists('models/parkinsons_model.sav'):
-    parkinsons_model = pickle.load(open('models/parkinsons_model.sav', 'rb'))
-else:
-    st.error("Parkinson's model file not found. Please check the file path.")
+import streamlit as st
 
 # Define custom CSS styles for sidebar icons
 sidebar_icon_style = """
@@ -385,7 +379,7 @@ if (selected == 'Heart Disease Prediction'):
         heart_prediction = heart_disease_model.predict(a)  
                         
         b = np.array( heart_prediction, dtype=float) #  convert using numpy
-        if (b[0] == 1):
+        if (b[0] == 0):
           heart_diagnosis = 'The person is having heart disease'
         else:
           heart_diagnosis = 'The person does not have any heart disease'
