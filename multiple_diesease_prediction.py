@@ -55,11 +55,15 @@ def display_reviews_and_ratings(selected_disease):
 
 
 #loading the saved models
-model_files = {
-    'diabetes_model': 'models/diabetes_model.sav',
-    'heart_disease_model': 'models/heart_disease_model.sav',
-    'parkinsons_model': 'models/parkinsons_model.sav'
-}
+try:
+    diabetes_model = pickle.load(open('diabetes_model.sav', 'rb'))
+    heart_disease_model = pickle.load(open('heart_disease_model.sav', 'rb'))
+    parkinsons_model = pickle.load(open('parkinsons_model.sav', 'rb'))
+    st.success("Models loaded successfully!")
+except FileNotFoundError as e:
+    st.error(f"Error loading model: {e}")
+except Exception as e:
+    st.error(f"An unexpected error occurred: {e}")
 
 
 import streamlit as st
