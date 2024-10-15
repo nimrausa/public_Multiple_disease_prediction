@@ -55,13 +55,20 @@ def display_reviews_and_ratings(selected_disease):
 
 
 
-# Load the saved models
-diabetes_model = pickle.load(open('models/diabetes_model.sav','rb'))
-heart_disease_model = pickle.load(open('models/heart_disease_model.sav','rb'))
-parkinsons_model = pickle.load(open('models/parkinsons_model.sav','rb'))
+if os.path.exists('models/diabetes_model.sav'):
+    diabetes_model = pickle.load(open('models/diabetes_model.sav', 'rb'))
+else:
+    st.error("Diabetes model file not found. Please check the file path.")
 
+if os.path.exists('models/heart_disease_model.sav'):
+    heart_disease_model = pickle.load(open('models/heart_disease_model.sav', 'rb'))
+else:
+    st.error("Heart disease model file not found. Please check the file path.")
 
-import streamlit as st
+if os.path.exists('models/parkinsons_model.sav'):
+    parkinsons_model = pickle.load(open('models/parkinsons_model.sav', 'rb'))
+else:
+    st.error("Parkinson's model file not found. Please check the file path.")
 
 # Define custom CSS styles for sidebar icons
 sidebar_icon_style = """
