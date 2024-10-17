@@ -55,7 +55,7 @@ def display_reviews_and_ratings(selected_disease):
 
 
 #loading the saved models
-diabetes_model=pickle.load(open('diabetes_model.sav'))
+diabetes_model=pickle.load(open('diabetes_model.sav', 'rb'))
 heart_disease_model=pickle.load(open('heart_disease_model.sav','rb'))
 parkinsons_model=pickle.load(open('parkinsons_model.sav','rb'))
 
