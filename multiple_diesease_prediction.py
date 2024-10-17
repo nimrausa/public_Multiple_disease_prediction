@@ -394,9 +394,11 @@ if (selected == 'Heart Disease Prediction'):
         b = np.array(heart_prediction, dtype=float)  # Convert to float
         
         if b[0] == 0 and thal == 0:
-            heart_diagnosis = 'The person is have heart disease'
+            heart_diagnosis = 'The person does not have heart disease.'
+        elif thal == 2:
+            heart_diagnosis = 'The person likely has heart disease.'
         else:
-            heart_diagnosis = 'The person does not have any heart disease'
+            heart_diagnosis = 'The person does not have any heart disease.'
 
         
     st.success(heart_diagnosis)
