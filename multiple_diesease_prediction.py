@@ -397,23 +397,6 @@ if (selected == 'Heart Disease Prediction'):
             heart_diagnosis = 'The person is have heart disease'
         else:
             heart_diagnosis = 'The person does not have any heart disease'
-        
-
-    if heart_prediction[0] == 1:
-        heart_diagnosis = "The person likely has heart disease."
-        if thal == 1:
-            heart_diagnosis += " Additionally, the thalassemia test shows a fixed defect."
-        elif thal == 2:
-            heart_diagnosis += " The thalassemia test shows a reversible defect."
-    else:
-        heart_diagnosis = "The person likely does not have heart disease."
-        if thal == 0:
-            heart_diagnosis += " The thalassemia test is normal."
-
-
-
-
-
 
         
     st.success(heart_diagnosis)
