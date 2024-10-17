@@ -396,7 +396,7 @@ if (selected == 'Heart Disease Prediction'):
         if b[0] == 1:
             heart_diagnosis = 'The person is have heart disease'
         else:
-            heart_diagnosis = 'The person does not have any heart disease''
+            heart_diagnosis = 'The person does not have any heart disease'
         
         
     st.success(heart_diagnosis)
