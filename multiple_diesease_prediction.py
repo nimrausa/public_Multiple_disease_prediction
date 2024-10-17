@@ -57,9 +57,11 @@ def display_reviews_and_ratings(selected_disease):
 def load_model(file_path):
     return pickle.load(open(file_path, 'rb'))
 
-diabetes_model = load_model('diabetes_model.sav')
-heart_disease_model = load_model('heart_disease_model.sav')
-parkinsons_model = load_model('parkinsons_model.sav')
+#loading the saved models
+diabetes_model=pickle.load(open('diabetes_model.sav'))
+heart_disease_model=pickle.load(open('heart_disease_model.sav'))
+parkinsons_model=pickle.load(open('parkinsons_model.sav'))
+
 
 
 
