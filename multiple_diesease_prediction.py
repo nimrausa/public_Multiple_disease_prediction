@@ -54,7 +54,7 @@ def display_reviews_and_ratings(selected_disease):
 
 
 
-#loading the saved models   
+#loading the saved models
 diabetes_model=pickle.load(open('diabetes_model.sav'))
 if os.path.exists('heart_disease_model.sav'):
     try:
@@ -65,7 +65,7 @@ if os.path.exists('heart_disease_model.sav'):
         st.error(f"Error loading heart disease model: {e}")
 else:
     st.error("Heart disease model file not found in the current directory.")
-parkinsons_model=pickle.load(open('parkinsons_model.sav'))
+parkinsons_model=pickle.load(open('parkinsons_model.sav','rb'))
 
 
 
