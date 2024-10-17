@@ -56,15 +56,7 @@ def display_reviews_and_ratings(selected_disease):
 
 #loading the saved models
 diabetes_model=pickle.load(open('diabetes_model.sav'))
-if os.path.exists('heart_disease_model.sav'):
-    try:
-        with open('heart_disease_model.sav', 'rb') as file:
-            heart_disease_model = pickle.load(file)
-        st.write("Heart disease model loaded successfully.")
-    except Exception as e:
-        st.error(f"Error loading heart disease model: {e}")
-else:
-    st.error("Heart disease model file not found in the current directory.")
+heart_disease_model=pickle.load(open('heart_disease_model.sav','rb'))
 parkinsons_model=pickle.load(open('parkinsons_model.sav','rb'))
 
 
