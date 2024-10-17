@@ -57,9 +57,6 @@ def display_reviews_and_ratings(selected_disease):
 def load_model(file_path):
     return pickle.load(open(file_path))
 
-# getting the working directory of the main.py
-working_dir = os.path.dirname(os.path.abspath(__file__))
-
 # loading the saved models
 
 diabetes_model = pickle.load(open('saved_models/diabetes_model.sav'))
