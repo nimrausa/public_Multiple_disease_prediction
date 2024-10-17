@@ -386,14 +386,18 @@ if (selected == 'Heart Disease Prediction'):
     # creating a button for Prediction
     
     if st.button('Heart Disease Test Result'):
-        a=np.array([age, sex, cp, trestbps, chol, fbs, restecg,thalach,exang,oldpeak,slope,ca,thal], dtype=float)
-        heart_prediction = heart_disease_model.predict(a)  
-                        
-        b = np.array( heart_prediction, dtype=float) #  convert using numpy
-        if (b[0] == 0):
-          heart_diagnosis = 'The person is having heart disease'
+        a = np.array([age, sex, cp, trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal])
+
+        # Reshape the input array to 2D
+        heart_prediction = heart_disease_model.predict([a])  # Reshaping to a 2D array
+
+        b = np.array(heart_prediction, dtype=float)  # Convert to float
+        
+        if b[0] == 0:
+            heart_diagnosis = 'The person does not have heart disease'
         else:
-          heart_diagnosis = 'The person does not have any heart disease'
+            heart_diagnosis = 'The person has heart disease'
+        
         
     st.success(heart_diagnosis)
         
@@ -648,12 +652,13 @@ if (selected == "Parkinsons Prediction"):
     
     # creating a button for Prediction    
     if st.button("Parkinson's Test Result"):
-        parkinsons_prediction = parkinsons_model.predict([fo, fhi, flo, Jitter_percent, Jitter_Abs, RAP, PPQ,DDP,Shimmer,Shimmer_dB,APQ3,APQ5,APQ,DDA,NHR,HNR,RPDE,DFA,spread1,spread2,D2,PPE])                          
-        
-        if (parkinsons_prediction[0] == 1):
-          parkinsons_diagnosis = "The person has Parkinson's disease"
+    # Reshape the input array to 2D
+        parkinsons_prediction = parkinsons_model.predict([[fo, fhi, flo, Jitter_percent, Jitter_Abs, RAP, PPQ, DDP, Shimmer, Shimmer_dB, APQ3, APQ5, APQ, DDA, NHR, HNR, RPDE, DFA, spread1, spread2, D2, PPE]])
+
+        if parkinsons_prediction[0] == 1:
+            parkinsons_diagnosis = "The person has Parkinson's disease"
         else:
-          parkinsons_diagnosis = "The person does not have Parkinson's disease"
+            parkinsons_diagnosis = "The person does not have Parkinson's disease"
         
     st.success(parkinsons_diagnosis)
 
