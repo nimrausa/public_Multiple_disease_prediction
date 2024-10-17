@@ -8,7 +8,7 @@ Created on Tue Aug  9 21:06:41 2022
 import pickle #load saved models
 import streamlit as st  #for web page
 import sys
-
+import os
 sys.path.insert(1, "streamlit_option_menu")
 from streamlit_option_menu import option_menu
 import numpy as np
@@ -56,14 +56,18 @@ def display_reviews_and_ratings(selected_disease):
 @st.cache_data
 def load_model(file_path):
     return pickle.load(open(file_path))
+   
+# getting the working directory of the main.py
+working_dir = os.path.dirname(os.path.abspath(__file__))
 
 # loading the saved models
 
-diabetes_model = pickle.load(open('saved_models/diabetes_model.sav'))
+diabetes_model = pickle.load(open(f'{working_dir}/saved_models/diabetes_model.sav', 'rb'))
 
-heart_disease_model = pickle.load(open('saved_models/heart_disease_model.sav'))
+heart_disease_model = pickle.load(open(f'{working_dir}/saved_models/heart_disease_model.sav', 'rb'))
 
-parkinsons_model = pickle.load(open('/saved_models/parkinsons_model.sav'))
+parkinsons_model = pickle.load(open(f'{working_dir}/saved_models/parkinsons_model.sav', 'rb'))
+
 
 
 
