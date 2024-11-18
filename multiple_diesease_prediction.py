@@ -52,7 +52,7 @@ def display_reviews_and_ratings(selected_disease):
     # Update the session state with the latest reviews data
     st.session_state.reviews_data = reviews_data
 
-    #Created by Faraz Idris Siddiqui and Nimra
+    st.write("Created by Faraz Idris Siddiqui and Nimra")
 @st.cache_data
 def load_model(file_path):
     return pickle.load(open(file_path))
